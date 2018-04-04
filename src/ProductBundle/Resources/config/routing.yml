@@ -1,3 +1,23 @@
 product_homepage:
     path:     /
     defaults: { _controller: ProductBundle:Default:index }
+    
+product_list:
+    path:     /list
+    defaults: { _controller: ProductBundle:Default:list }
+    
+product_create:
+    path:     /create
+    defaults: { _controller: ProductBundle:Default:create }
+    
+product_:
+    path:     /
+    defaults: { _controller: ProductBundle:Default:index }
+    
+product_homepage:
+    path:     /
+    defaults: { _controller: ProductBundle:Default:index }
+    
+product_homepage:
+    path:     /
+    defaults: { _controller: ProductBundle:Default:index }
