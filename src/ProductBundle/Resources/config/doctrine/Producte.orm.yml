@@ -1,0 +1,20 @@
+ProductBundle\Entity\Producte:
+    type: entity
+    table: productes
+    repositoryClass: ProductBundle\Repository\ProducteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: '100'
+        descripcio:
+            type: string
+            length: 255
+        preu:
+            type: integer
+    lifecycleCallbacks: {  }
