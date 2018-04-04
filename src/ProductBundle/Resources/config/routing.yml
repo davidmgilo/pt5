@@ -7,17 +7,17 @@ product_list:
     defaults: { _controller: ProductBundle:Default:list }
     
 product_create:
-    path:     /create
+    path:     /create/{nom}/{descripcio}/{preu}
     defaults: { _controller: ProductBundle:Default:create }
     
-product_:
-    path:     /
-    defaults: { _controller: ProductBundle:Default:index }
+product_read:
+    path:     /read/{id}
+    defaults: { _controller: ProductBundle:Default:read }
     
-product_homepage:
-    path:     /
-    defaults: { _controller: ProductBundle:Default:index }
+product_update:
+    path:     /update/{id}/{nom}/{descripcio}/{preu}
+    defaults: { _controller: ProductBundle:Default:update }
     
-product_homepage:
-    path:     /
-    defaults: { _controller: ProductBundle:Default:index }
+product_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ProductBundle:Default:delete }
