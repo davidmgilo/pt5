@@ -27,4 +27,17 @@ class DefaultController extends Controller
         }
         die();
     }
+    
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $product_repo = $em->getRepository("ProductBundle:Producte");
+        $products = $product_repo->findAll();
+        
+        foreach ($products as $product) {
+            echo $product->getNom().' - '. $product->getDescripcio() .' - '. $product->getPreu() ."<br>";
+        }
+        die();
+    }
 }
