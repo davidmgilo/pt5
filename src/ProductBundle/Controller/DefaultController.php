@@ -71,4 +71,20 @@ class DefaultController extends Controller
         }
         die();
     }
+    
+     public function deleteAction($id){
+         
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $product_repo = $em->getRepository("ProductBundle:Producte");
+        $product = $product_repo->find($id);
+        
+        $em->remove($product);
+        $flush = $em->flush();
+        
+        if($flush == null){
+            echo "Esborrat correctament";
+        }
+        die();
+     }
 }
