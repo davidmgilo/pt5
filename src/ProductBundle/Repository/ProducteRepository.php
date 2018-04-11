@@ -10,4 +10,15 @@ namespace ProductBundle\Repository;
  */
 class ProducteRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function preuEntre($preu1, $preu2) {
+        $em = $this->getEntityManager();
+        $dql = "SELECT c.id, c.nom, c.descripcio, c.preu FROM ProductBundle:Producte c WHERE c.preu BETWEEN ?1 AND ?2";
+        $query = $em->createQuery($dql);
+        $query->setParameter(1, $preu1);
+        $query->setParameter(2, $preu2);
+        
+        $products = $query->getResult();
+        
+        return $products;
+    }   
 }

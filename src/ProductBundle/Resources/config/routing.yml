@@ -21,3 +21,7 @@ product_update:
 product_delete:
     path:     /delete/{id}
     defaults: { _controller: ProductBundle:Default:delete }
+
+product_dql:
+    path:     /dql/{preu1}/{preu2}
+    defaults: { _controller: ProductBundle:Default:dql }

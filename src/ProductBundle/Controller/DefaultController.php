@@ -75,7 +75,7 @@ class DefaultController extends Controller
         die();
     }
     
-     public function deleteAction($id){
+    public function deleteAction($id){
          
         $em = $this->getDoctrine()->getEntityManager();
         
@@ -89,5 +89,20 @@ class DefaultController extends Controller
             echo "Esborrat correctament";
         }
         die();
-     }
+    }
+     
+    public function dqlAction($preu1,$preu2)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $product_repo = $em->getRepository("ProductBundle:Producte");
+        $products = $product_repo->preuEntre($preu1,$preu2);
+        
+        foreach ($products as $product) {
+            echo $product['id']. ' - '.$product['nom']. ' - '.$product['descripcio']. ' - '.$product['preu']."<br>";
+        }
+        die();
+        
+        //return $this->render('AnimalBundle:Default:index.html.twig');
+    }
 }
