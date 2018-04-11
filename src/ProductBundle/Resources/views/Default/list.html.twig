@@ -1,0 +1,10 @@
+{% extends 'ProductBundle:Default:base.html.twig'%}
+{% block title %}Llista!{% endblock %}
+{% block body %}
+    <ul class="list-group">
+        <li class="list-group-item">ID - Nom - Descripció - Preu</li>
+    {% for product in products %}
+        <li class="list-group-item">{{ product.getId() }} - {{ product.getNom()}} - {{ product.getDescripcio() }} - {{ product.getPreu() }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

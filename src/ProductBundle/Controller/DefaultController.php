@@ -35,10 +35,13 @@ class DefaultController extends Controller
         $product_repo = $em->getRepository("ProductBundle:Producte");
         $products = $product_repo->findAll();
         
-        foreach ($products as $product) {
-            echo $product->getId(). ' - ' . $product->getNom().' - '. $product->getDescripcio() .' - '. $product->getPreu() ."<br>";
-        }
-        die();
+//        foreach ($products as $product) {
+//            echo $product->getId(). ' - ' . $product->getNom().' - '. $product->getDescripcio() .' - '. $product->getPreu() ."<br>";
+//        }
+//        die();
+        return $this->render('ProductBundle:Default:list.html.twig', array(
+            "products"=> $products
+        ));
     }
     
     public function readAction($id)
