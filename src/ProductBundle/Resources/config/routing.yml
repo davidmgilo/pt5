@@ -25,3 +25,7 @@ product_delete:
 product_dql:
     path:     /dql/{preu1}/{preu2}
     defaults: { _controller: ProductBundle:Default:dql }
+
+product_preuigual:
+    path:     /igual/{preu}
+    defaults: { _controller: ProductBundle:Default:igual }

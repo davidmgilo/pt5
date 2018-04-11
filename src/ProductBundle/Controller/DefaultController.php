@@ -105,4 +105,16 @@ class DefaultController extends Controller
         
         //return $this->render('AnimalBundle:Default:index.html.twig');
     }
+    
+    public function igualAction($preu){
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $product_repo = $em->getRepository("ProductBundle:Producte");
+        $products = $product_repo->findBy(array('preu' => $preu));
+        
+        foreach ($products as $product) {
+            echo $product->getId(). ' - ' . $product->getNom().' - '. $product->getDescripcio() .' - '. $product->getPreu() ."<br>";
+        }
+        die();
+    }
 }
