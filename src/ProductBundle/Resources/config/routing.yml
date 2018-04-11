@@ -29,3 +29,7 @@ product_dql:
 product_preuigual:
     path:     /igual/{preu}
     defaults: { _controller: ProductBundle:Default:igual }
+
+product_sql:
+    path:     /sql/{preu}/{lletres}
+    defaults: { _controller: ProductBundle:Default:sql }

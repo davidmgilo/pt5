@@ -20,5 +20,5 @@ class ProducteRepository extends \Doctrine\ORM\EntityRepository
         $products = $query->getResult();
         
         return $products;
-    }   
+    }  
 }

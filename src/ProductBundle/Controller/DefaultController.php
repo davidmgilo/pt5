@@ -82,11 +82,16 @@ class DefaultController extends Controller
         $product_repo = $em->getRepository("ProductBundle:Producte");
         $product = $product_repo->find($id);
         
+        if($product == null){
+            echo "Producte inexistent";
+            die();
+        }
+        
         $em->remove($product);
         $flush = $em->flush();
-        
+               
         if($flush == null){
-            echo "Esborrat correctament";
+           echo "Esborrat correctament";
         }
         die();
     }
@@ -116,5 +121,25 @@ class DefaultController extends Controller
             echo $product->getId(). ' - ' . $product->getNom().' - '. $product->getDescripcio() .' - '. $product->getPreu() ."<br>";
         }
         die();
+    }
+    
+    public function sqlAction($preu, $lletres)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $db = $em->getConnection();
+        
+        $sql = "SELECT * FROM productes WHERE preu=".$preu." AND nom LIKE '".$lletres."%'";
+        
+        $stmt = $db->prepare($sql);
+        $params = array();
+        $stmt->execute($params);
+        
+        $products = $stmt->fetchAll();
+        
+        foreach ($products as $product) {
+            echo $product['id']. ' - '.$product['nom']. ' - '.$product['descripcio']. ' - '.$product['preu']."<br>";
+        }
+        die();
+        
     }
 }
