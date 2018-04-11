@@ -36,7 +36,38 @@ class DefaultController extends Controller
         $products = $product_repo->findAll();
         
         foreach ($products as $product) {
-            echo $product->getNom().' - '. $product->getDescripcio() .' - '. $product->getPreu() ."<br>";
+            echo $product->getId(). ' - ' . $product->getNom().' - '. $product->getDescripcio() .' - '. $product->getPreu() ."<br>";
+        }
+        die();
+    }
+    
+    public function readAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $product_repo = $em->getRepository("ProductBundle:Producte");
+        $product = $product_repo->find($id);
+        
+        echo $product->getId(). ' - ' . $product->getNom().' - '. $product->getDescripcio() .' - '. $product->getPreu();
+        die();
+    }
+    
+    public function updateAction($id,$nom,$descripcio,$preu)
+    {        
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $product_repo = $em->getRepository("ProductBundle:Producte");
+        $product = $product_repo->find($id);
+        
+        $product->setNom($nom);
+        $product->setDescripcio($descripcio);
+        $product->setPreu($preu);
+        
+        $em->persist($product);
+        $flush = $em->flush();
+        
+        if($flush == null){
+            echo "Actualitzat correctament";
         }
         die();
     }
