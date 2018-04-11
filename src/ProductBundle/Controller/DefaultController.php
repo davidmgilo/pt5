@@ -51,6 +51,11 @@ class DefaultController extends Controller
         $product_repo = $em->getRepository("ProductBundle:Producte");
         $product = $product_repo->find($id);
         
+        if($product == null){
+            echo "Producte inexistent";
+            die();
+        }
+        
         echo $product->getId(). ' - ' . $product->getNom().' - '. $product->getDescripcio() .' - '. $product->getPreu();
         die();
     }
@@ -61,6 +66,11 @@ class DefaultController extends Controller
         
         $product_repo = $em->getRepository("ProductBundle:Producte");
         $product = $product_repo->find($id);
+        
+        if($product == null){
+            echo "Producte inexistent";
+            die();
+        }
         
         $product->setNom($nom);
         $product->setDescripcio($descripcio);
