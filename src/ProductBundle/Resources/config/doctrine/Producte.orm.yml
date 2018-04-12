@@ -19,4 +19,7 @@ ProductBundle\Entity\Producte:
         preu:
             type: integer
             nullable: true
+        esBeguda:
+            type: boolean
+            nullable: true
     lifecycleCallbacks: {  }

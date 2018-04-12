@@ -109,33 +109,5 @@ class Producte
     {
         return $this->preu;
     }
-    /**
-     * @var boolean
-     */
-    private $esBeguda;
-
-
-    /**
-     * Set esBeguda
-     *
-     * @param boolean $esBeguda
-     *
-     * @return Producte
-     */
-    public function setEsBeguda($esBeguda)
-    {
-        $this->esBeguda = $esBeguda;
-
-        return $this;
-    }
-
-    /**
-     * Get esBeguda
-     *
-     * @return boolean
-     */
-    public function getEsBeguda()
-    {
-        return $this->esBeguda;
-    }
 }
+

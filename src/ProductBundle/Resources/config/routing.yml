@@ -33,3 +33,7 @@ product_preuigual:
 product_sql:
     path:     /sql/{preu}/{lletres}
     defaults: { _controller: ProductBundle:Default:sql }
+
+product_form:
+    path:     /form
+    defaults: { _controller: ProductBundle:Default:form } 

@@ -1,0 +1,10 @@
+Formulari
+{% if (status != null) and (data != null)%}
+    <h3>{{ status }}</h3>
+    {{ dump(data) }}
+{% else %}
+    {{form_start(form, {'action':path('product_form'),'method':'POST'})}}
+        {{form_errors(form)}}
+        {{form_widget(form)}}
+    {{form_end(form)}}
+{% endif %}

@@ -1,0 +1,14 @@
+ProductBundle\Entity\Producte:
+    properties:
+        nom:
+            - NotBlank: {message: "El nom no pot estar buit"}
+            - Length:
+                min: 5
+                minMessage: "El nom ha de ser de 5 caracters minim"
+        preu:
+            - NotBlank: {message: "El preu no pot estar buit"}
+            - Type:
+                type: numeric
+                message: "El preu ha de ser un integer"
+        descripcio:
+            - NotBlank: {message: "La descripcio no pot estar buida"}

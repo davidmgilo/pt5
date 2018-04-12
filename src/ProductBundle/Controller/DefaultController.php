@@ -3,6 +3,9 @@
 namespace ProductBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use ProductBundle\Form\ProducteType;
+use ProductBundle\Entity\Producte;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -151,5 +154,42 @@ class DefaultController extends Controller
         }
         die();
         
+    }
+    
+    public function formAction(Request $request){
+        $product = new Producte();
+        $form = $this->createForm(ProducteType::class,$product);
+        
+        $form->handleRequest($request);
+       if($form->isValid()){
+            $status = "Formulari OK";
+            $data = array(
+              'nom' => $form->get("nom")->getData(),  
+              'descripcio' => $form->get("descripcio")->getData(),  
+              'preu' => $form->get("preu")->getData(),  
+              'esBeguda' => $form->get("esBeguda")->getData()  
+            );
+            
+            $product->setNom($data['nom']);
+            $product->setDescripcio($data['descripcio']);
+            $product->setPreu($data['preu']);
+            $product->setEsBeguda($data['esBeguda']);
+        
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($product);
+            $em->flush();
+            
+            // return $this->redirectToRoute('replace_with_some_route');
+            
+        } else{
+            $status = null;
+            $data = null;
+       }
+        
+        return $this->render('ProductBundle:Default:form.html.twig', array(
+            'form' => $form->createView(),
+            'status' => $status,
+            'data' => $data
+        ));
     }
 }
